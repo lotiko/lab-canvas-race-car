@@ -1,4 +1,5 @@
 let car;
+car = new Car();
 let obstacles;
 let gameover;
 let points;
@@ -6,6 +7,7 @@ let points;
 const ctx = document.querySelector('canvas').getContext('2d');
 const W = ctx.canvas.width;
 const H = ctx.canvas.height;
+
 
 function draw() {
   //
@@ -41,7 +43,7 @@ function draw() {
   //
   // Iteration 2: car drawing
   //
-  car = new Car();
+  
   car.draw();
   
 
@@ -77,7 +79,7 @@ function animLoop() {
   frames++;
 
   draw();
-
+  car = new Car();
   if (!gameover) {
     raf = requestAnimationFrame(animLoop);
   }
@@ -94,6 +96,7 @@ function startGame() {
 }
 
 document.getElementById("start-button").onclick = function() {
+  
   startGame();
 };
 

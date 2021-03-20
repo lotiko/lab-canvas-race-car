@@ -9,7 +9,7 @@ class Car {
       this.w = 100;
       this.h = this.w / imgRatio
       this.x = (W/2) - this.w/2;
-      this.y = H - H/9
+      this.y = H - H/7;
     }
     img.src = "images/car.png";
   }
