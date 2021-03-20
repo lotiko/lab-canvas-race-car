@@ -1,16 +1,14 @@
 class Car {
   constructor() {
-
-    const img = document.createElement('img');
+    const img = document.createElement("img");
     img.onload = () => {
       this.img = img;
-
-      const imgRatio = img.naturalWidth/img.naturalHeight;
+      const imgRatio = img.naturalWidth / img.naturalHeight;
       this.w = 100;
-      this.h = this.w / imgRatio
-      this.x = (W/2) - this.w/2;
-      this.y = H - H/9
-    }
+      this.h = this.w / imgRatio;
+      this.x = W / 2 - this.w / 2;
+      this.y = H - H / 7;
+    };
     img.src = "images/car.png";
   }
 
@@ -20,9 +18,9 @@ class Car {
   }
 
   moveLeft() {
-    // TODO
+    this.x -= 10;
   }
   moveRight() {
-    // TODO
+    this.x += 10;
   }
 }
