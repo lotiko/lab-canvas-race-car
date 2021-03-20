@@ -6,7 +6,7 @@ class Car {
 
       const imgRatio = img.naturalWidth/img.naturalHeight;
 
-      // TODO
+      ctx.
     }
     img.src = "images/car.png";
   }
