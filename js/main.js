@@ -41,8 +41,9 @@ function draw() {
   //
   // Iteration 2: car drawing
   //
-
-  // TODO
+  car = new Car();
+  car.draw();
+  
 
   //
   // Iteration #4: obstacles
@@ -87,7 +88,7 @@ function startGame() {
     cancelAnimationFrame(raf);
   }
 
-  // TODO
+ 
 
   animLoop();
 }
@@ -98,3 +99,4 @@ document.getElementById("start-button").onclick = function() {
 
 // auto-start
 startGame();
+

@@ -1,5 +1,6 @@
 class Car {
   constructor() {
+
     const img = document.createElement('img');
     img.onload = () => {
       this.img = img;
@@ -8,16 +9,14 @@ class Car {
       this.w = 100;
       this.h = this.w / imgRatio
       this.x = (W/2) - this.w/2;
-      this.y = 
-      ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+      this.y = H - H/9
     }
     img.src = "images/car.png";
   }
 
   draw() {
     if (!this.img) return; // if `this.img` is not loaded yet => don't draw
-
-    // TODO
+    ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
   }
 
   moveLeft() {
