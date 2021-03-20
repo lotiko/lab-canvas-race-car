@@ -1,5 +1,4 @@
 let car;
-car = new Car();
 let obstacles;
 let gameover;
 let points;
@@ -87,7 +86,6 @@ function animLoop() {
   frames++;
 
   draw();
-  car = new Car();
   if (!gameover) {
     raf = requestAnimationFrame(animLoop);
   }
@@ -97,6 +95,7 @@ function startGame() {
   if (raf) {
     cancelAnimationFrame(raf);
   }
+  car = new Car();
 
   animLoop();
 }
@@ -107,3 +106,7 @@ document.getElementById("start-button").onclick = function () {
 
 // auto-start
 startGame();
+
+document.onclick = (e) => {
+  console.log("x=", e.x, "y=", e.y);
+};
