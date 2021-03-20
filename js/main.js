@@ -87,7 +87,7 @@ function animLoop() {
   frames++;
 
   draw();
-
+  car = new Car();
   if (!gameover) {
     raf = requestAnimationFrame(animLoop);
   }
