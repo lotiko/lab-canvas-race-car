@@ -14,13 +14,34 @@ class Obstacle {
   }
 
   draw() {
-    this.y++;
+    this.y += 5;
     // console.log(this.x, this.y, this.width, this.height, ctx, frames);
     ctx.clearRect(this.x, this.y, this.width, this.height);
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
-
+  left() {
+    return this.x;
+  }
+  right() {
+    return this.x + this.width;
+  }
+  top() {
+    return this.y;
+  }
+  bottom() {
+    return this.y + this.height;
+  }
   hits(car) {
-    // TODO
+    // let t1 = this.bottom() > car.top();
+    // let t1 = this.bottom() > car.top();
+    // let t2 = this.right() > car.right();
+    // let t3 = this.left() < car.left();
+    // return t1 && t2 && t3;
+    return (
+      this.bottom() > car.top() &&
+      this.top() < car.bottom() &&
+      this.right() > car.left() &&
+      this.left() < car.right()
+    );
   }
 }

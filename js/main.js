@@ -54,8 +54,11 @@ function draw() {
 
   // TODO
   ctx.fillStyle = "red";
-  if (frames % 300 === 0) {
+  if (frames % 120 === 0) {
     obstacles.push(new Obstacle());
+    if (obstacles.length === 11) {
+      obstacles.shift();
+    }
   }
   for (let index = 0; index < obstacles.length; index++) {
     const element = obstacles[index];
@@ -100,14 +103,32 @@ function animLoop() {
 
   frames++;
   draw();
-
-  if (/*!gameover*/ frames > 1000) {
+  gameover = obstacles.some((ob) => {
+    console.log(ob);
+    return ob.hits(car);
+  });
+  console.log(gameover, "gameover");
+  if (gameover) {
+    console.log("in gameover");
     cancelAnimationFrame(raf);
   } else {
     raf = requestAnimationFrame(() => animLoop());
   }
 }
+function checkGameOver() {
+  const crashed = obstacles.some((ob) => {
+    console.log(ob);
+    return ob.hits(car);
+  });
+  // let crashed = false;
+  // obstacles.forEach((ob) => {
+  //   console.log(ob.hits(car));
+  //   if (ob.hits(car)) crashed = true;
+  // });
+  // console.log("iiiiiiiiiiiiiiiiiiiiiiiiiiii");
 
+  return crashed;
+}
 function startGame() {
   // animLoop();
   // let ob = new Obstacle();

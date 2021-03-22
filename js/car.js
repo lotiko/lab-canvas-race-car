@@ -24,4 +24,16 @@ class Car {
   moveRight() {
     this.x += 20;
   }
+  left() {
+    return this.x;
+  }
+  right() {
+    return this.x + this.w;
+  }
+  top() {
+    return this.y;
+  }
+  bottom() {
+    return this.y + this.h;
+  }
 }
