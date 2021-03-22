@@ -1,6 +1,8 @@
-let car;
-let obstacles;
-let gameover;
+let raf = 0;
+let frames = 0;
+let car = new Car();
+let obstacles = [];
+let gameover = false;
 let points;
 
 const ctx = document.querySelector("canvas").getContext("2d");
@@ -8,9 +10,12 @@ const W = ctx.canvas.width;
 const H = ctx.canvas.height;
 
 function draw() {
+  console.log("test2");
+
   //
   // Iteration 1: road drawing
   //
+  ctx.clearRect(0, 0, W, H);
   //goudron plus ligne discontinue
   ctx.beginPath();
   ctx.fillStyle = "grey";
@@ -48,7 +53,15 @@ function draw() {
   //
 
   // TODO
-
+  ctx.fillStyle = "red";
+  if (frames % 300 === 0) {
+    obstacles.push(new Obstacle());
+  }
+  for (let index = 0; index < obstacles.length; index++) {
+    const element = obstacles[index];
+    element.draw();
+  }
+  // obstacles.draw();
   //
   // Iteration #5: collisions
   //
@@ -63,7 +76,7 @@ function draw() {
 }
 
 document.onkeydown = function (e) {
-  console.log(car, e.code);
+  // console.log(car, e.code);
   if (!car) return;
   switch (e.key) {
     case "ArrowLeft":
@@ -80,23 +93,25 @@ document.onkeydown = function (e) {
   // TODO
 };
 
-let raf;
-let frames = 0;
 function animLoop() {
-  frames++;
+  console.log("test", raf, frames);
 
+  // draw();
+
+  frames++;
   draw();
-  if (!gameover) {
-    raf = requestAnimationFrame(animLoop);
+
+  if (/*!gameover*/ frames > 1000) {
+    cancelAnimationFrame(raf);
+  } else {
+    raf = requestAnimationFrame(() => animLoop());
   }
 }
 
 function startGame() {
-  if (raf) {
-    cancelAnimationFrame(raf);
-  }
-  car = new Car();
-
+  // animLoop();
+  // let ob = new Obstacle();
+  // obstacles.push(ob);
   animLoop();
 }
 
@@ -105,8 +120,4 @@ document.getElementById("start-button").onclick = function () {
 };
 
 // auto-start
-startGame();
-
-document.onclick = (e) => {
-  console.log("x=", e.x, "y=", e.y);
-};
+// startGame();
